@@ -1,0 +1,18 @@
+<div class="card">
+    <section>
+        <h4>{{ heading }}</h4>
+        <span class="gray-text">{{ subheading }}</span>
+    </section>
+    <div
+        style="display: flex; align-items: center"
+        *ngFor="let item of content"
+    >
+        <img alt="card" [src]="item.imgSrc" style="width: 25px; height: 25px" />
+        <div style="margin-left: 1rem">
+            <span class="gray-text">{{ item.span }}</span>
+            <p>{{ item.text }}</p>
+        </div>
+    </div>
+
+    <app-button *ngIf="button" type="text" [text]="button?.text!"></app-button>
+</div>

@@ -1,0 +1,12 @@
+<footer>
+    <app-button
+        *ngIf="cpfService.isValid"
+        text="Iniciar nova admissão"
+        [style]="{ 'margin-right': '1rem' }"
+    ></app-button>
+    <app-button
+        text="Dicas para admissão"
+        [type]="'outlined'"
+        (click)="handleClick()"
+    ></app-button>
+</footer>

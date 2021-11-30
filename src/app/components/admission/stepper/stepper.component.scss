@@ -1,0 +1,106 @@
+// :host {
+//     display: flex;
+//     justify-content: center;
+// }
+
+// .stepper {
+//     display: flex;
+//     flex-direction: row;
+//     width: 500px;
+//     justify-content: space-between;
+
+//     .step {
+//         display: flex;
+//         flex-direction: column;
+//         align-items: center;
+//     }
+
+//     .dot {
+//         position: relative;
+//         width: 15px;
+//         height: 15px;
+//         border-radius: 50%;
+
+//         &::before {
+//             content: "";
+//             display: block;
+//             position: absolute;
+//             top: 50%;
+//             right: 0;
+//             width: 100px;
+//             height: 2px;
+//             background-color: #afafaf;
+//         }
+//     }
+
+//     .title {
+//         margin-top: 0.5rem;
+//     }
+// }
+
+:host {
+    min-width: 25rem;
+    width: 60%;
+    margin: 0 auto;
+}
+
+.c-stepper {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.c-stepper__item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+
+    h3 {
+        margin: 0.5rem 0 0;
+        font-weight: 500;
+        color: #afafaf;
+    }
+
+    &:before {
+        --size: 1rem;
+        content: "";
+        position: relative;
+        z-index: 1;
+        display: block;
+        width: var(--size);
+        height: var(--size);
+        border-radius: 50%;
+        margin: 0 auto;
+        border: 2px solid #1b5c7c;
+    }
+
+    &:first-child {
+        h3 {
+            color: #1b5c7c;
+        }
+
+        &::before {
+            background-color: #e6eef1;
+        }
+    }
+
+    &:not(:first-child):before {
+        border: 2px solid transparent;
+        background-color: #afafaf;
+    }
+
+    &:not(:last-child):after {
+        content: "";
+        position: relative;
+        top: calc(0.5rem + 2px);
+        left: 50%;
+        height: 2px;
+        background-color: #afafaf;
+        order: -1;
+    }
+
+    &:last-child {
+        position: relative;
+        top: 2px;
+    }
+}

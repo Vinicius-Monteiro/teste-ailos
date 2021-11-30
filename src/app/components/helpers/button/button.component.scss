@@ -1,0 +1,40 @@
+:host {
+    display: flex;
+}
+
+button {
+    font-family: "Roboto", sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 0 1rem;
+    cursor: pointer;
+    min-height: 2.5rem;
+    transition: filter 0.2s ease;
+
+    &:disabled {
+        cursor: initial;
+        background-color: #185e7c4d;
+    }
+
+    &:hover {
+        filter: brightness(0.95);
+    }
+}
+
+.filled {
+    color: #fff;
+    border-width: 0;
+    background-color: #185e7c;
+}
+
+.outlined {
+    color: #185e7c;
+    background-color: #fff;
+    border: 1px solid #185e7c;
+}
+
+.text {
+    color: #185e7c;
+    border: 0;
+    background-color: transparent;
+}

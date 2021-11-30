@@ -1,0 +1,27 @@
+:host {
+    display: flex;
+    flex-basis: 100%;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    padding: 0;
+    flex: 1;
+}
+
+.content {
+    padding: 1.5rem;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    background-color: #e6eef1;
+}
+
+::ng-deep .gray-text {
+    color: rgb(100, 100, 100);
+    font-size: 14px;
+}

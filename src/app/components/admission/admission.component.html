@@ -1,0 +1,89 @@
+<div class="container flex-column">
+    <app-admission-header></app-admission-header>
+    <div class="content">
+        <app-stepper
+            [steps]="['Início', 'Documentos', 'Dados cadastrais', 'Admissão']"
+        ></app-stepper>
+        <section>
+            <h2 style="font-weight: 400; margin: 2rem 0 0">
+                Informe o CPF do futuro cooperado(a)
+            </h2>
+            <p class="gray-text">
+                Se necessário, você poderá duplicar uma conta existente ou
+                pausar e retomar este cadastro futuramente.<br />Digite apenas
+                os números (sem pontos ou traços).
+            </p>
+            <form #form style="margin-top: 1rem">
+                <div class="flex-column">
+                    <span style="font-weight: 500; margin-bottom: 4px"
+                        >CPF</span
+                    >
+                    <div style="display: flex">
+                        <app-input
+                            [placeholder]="'000.000.000-00'"
+                            [(inputValue)]="cpf"
+                        ></app-input>
+                        <app-button
+                            [text]="'Consultar por CPF'"
+                            (click)="handleClick()"
+                            [style]="{ 'margin-left': '1rem' }"
+                            [disabled]="cpf === lastCheckedCPF"
+                        ></app-button>
+                    </div>
+                </div>
+            </form>
+            <div
+                *ngIf="cpfService.isValid"
+                style="margin-top: 2rem; display: flex"
+            >
+                <app-card
+                    heading="Situação cadastral do CPF"
+                    subheading="Consulta na Receita Federal"
+                    [content]="[
+                        {
+                            imgSrc: '../../../assets/svg/avatar.svg',
+                            span: 'Nome',
+                            text: userData?.name ?? ''
+                        },
+                        {
+                            imgSrc:
+                                userData?.cpfState === 'Regular'
+                                    ? '../../../assets/svg/success.svg'
+                                    : '../../../assets/svg/error.svg',
+                            span: 'Situação do CPF',
+                            text: userData?.cpfState ?? ''
+                        }
+                    ]"
+                ></app-card>
+                <app-card
+                    heading="Conta aplicação"
+                    subheading="Cooperativa Viacredi"
+                    [content]="[
+                        {
+                            imgSrc: '../../../assets/svg/card.svg',
+                            span: 'Número da conta',
+                            text: userData?.applicationAccount ?? ''
+                        }
+                    ]"
+                    [button]="{ url: '/', text: 'Duplicar conta' }"
+                ></app-card>
+                <app-card
+                    heading="Conta corrente"
+                    subheading="Cooperativa Viacredi"
+                    [content]="[
+                        {
+                            imgSrc: '../../../assets/svg/card.svg',
+                            span: 'Número da conta',
+                            text: userData?.creditAccount ?? ''
+                        }
+                    ]"
+                    [button]="{ url: '/', text: 'Duplicar conta' }"
+                ></app-card>
+            </div>
+            <div *ngIf="!cpfService.isValid && lastCheckedCPF.length">
+                <p style="color: #d02727">CPF inválido!</p>
+            </div>
+        </section>
+    </div>
+    <app-admission-footer></app-admission-footer>
+</div>

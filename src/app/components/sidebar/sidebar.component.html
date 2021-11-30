@@ -1,0 +1,25 @@
+<header class="sidebar">
+    <nav>
+        <ul class="links">
+            <li>
+                <a
+                    href="https://www.ailos.coop.br/"
+                    rel="noreferrer"
+                    target="_blank"
+                >
+                    <img
+                        alt="ailos logo"
+                        src="../../../assets/images/ailos_logo.png"
+                        style="width: 80px; height: 80px"
+                    />
+                </a>
+            </li>
+
+            <li *ngFor="let icon of icons">
+                <button>
+                    <img [src]="icon.src" [alt]="icon.alt" />
+                </button>
+            </li>
+        </ul>
+    </nav>
+</header>
